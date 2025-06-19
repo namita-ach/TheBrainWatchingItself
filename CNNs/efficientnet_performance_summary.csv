@@ -1,0 +1,2 @@
+Model,Inference Time (s),CPU Usage (%),RAM Usage (MB),Total Parameters,Overall Accuracy,Macro Avg Precision,Macro Avg Recall,Macro Avg F1-Score,Mean AUC-ROC
+EfficientNet,0.16683518648147583,2.5,4310.96484375,4214055,0.6395939086294417,0.7408642893114942,0.6291658273180012,0.576794211928729,0.846642687391264
