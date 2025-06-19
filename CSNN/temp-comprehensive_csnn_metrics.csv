@@ -1,0 +1,38 @@
+Metric,Value
+Overall Accuracy,0.6726
+Precision (Macro),0.7832
+Recall (Macro),0.6545
+F1-Score (Macro),0.6164
+Precision (Micro),0.6726
+Recall (Micro),0.6726
+F1-Score (Micro),0.6726
+AUC-ROC (Macro),0.8408
+AUC-ROC (Micro),0.8058
+Inference Time (s),0.007212
+CPU Usage (%),8.80
+RAM Usage (MB),996.72
+Total Parameters,8436580
+glioma_tumor - Precision,1.0000
+glioma_tumor - Recall,0.1500
+glioma_tumor - F1-Score,0.2609
+glioma_tumor - AUC-ROC,0.5794
+meningioma_tumor - Precision,0.6375
+meningioma_tumor - Recall,0.8870
+meningioma_tumor - F1-Score,0.7418
+meningioma_tumor - AUC-ROC,0.9207
+no_tumor - Precision,0.6176
+no_tumor - Recall,1.0000
+no_tumor - F1-Score,0.7636
+no_tumor - AUC-ROC,0.9412
+pituitary_tumor - Precision,0.8776
+pituitary_tumor - Recall,0.5811
+pituitary_tumor - F1-Score,0.6992
+pituitary_tumor - AUC-ROC,0.9220
+glioma_tumor - Sensitivity,0.1500
+glioma_tumor - Specificity,1.0000
+meningioma_tumor - Sensitivity,0.8870
+meningioma_tumor - Specificity,0.7921
+no_tumor - Sensitivity,1.0000
+no_tumor - Specificity,0.7751
+pituitary_tumor - Sensitivity,0.5811
+pituitary_tumor - Specificity,0.9812
