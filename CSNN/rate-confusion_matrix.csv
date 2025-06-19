@@ -1,5 +1,0 @@
-,Pred_Training,Pred_glioma_tumor,Pred_no_tumor,Pred_pituitary_tumor
-True_Training,0,17,74,9
-True_glioma_tumor,0,5,102,8
-True_no_tumor,0,5,98,2
-True_pituitary_tumor,0,14,23,37

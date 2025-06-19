@@ -457,29 +457,6 @@ for epoch in range(num_epochs):
 
 print("Training complete!")
 
-# Plot training curves
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 5))
-
-ax1.plot(train_losses, label='Training Loss', color='blue')
-ax1.plot(val_losses, label='Validation Loss', color='red')
-ax1.set_title('Training and Validation Loss')
-ax1.set_xlabel('Epoch')
-ax1.set_ylabel('Loss')
-ax1.legend()
-ax1.grid(True, alpha=0.3)
-
-ax2.plot(train_accuracies, label='Training Accuracy', color='blue')
-ax2.plot(val_accuracies, label='Validation Accuracy', color='red')
-ax2.set_title('Training and Validation Accuracy')
-ax2.set_xlabel('Epoch')
-ax2.set_ylabel('Accuracy (%)')
-ax2.legend()
-ax2.grid(True, alpha=0.3)
-
-plt.tight_layout()
-plt.savefig('training_curves.png', dpi=300, bbox_inches='tight')
-plt.show()
-
 # Save model
 save_path = "rate-csnn_lif_model_rate.pth"
 torch.save(model.state_dict(), save_path)
@@ -554,25 +531,7 @@ for item in evaluation_metrics['sensitivity_specificity']:
         f"{item['Specificity']:.4f}"
     ])
 
-# Save comprehensive metrics to CSV
-detailed_metrics_df = pd.DataFrame(detailed_metrics)
-csv_path = "rate-comprehensive_csnn_metrics.csv"
-detailed_metrics_df.to_csv(csv_path, index=False)
-print(f"\nComprehensive metrics saved to '{csv_path}'")
-
-# Save confusion matrix as CSV
-cm_df = pd.DataFrame(evaluation_metrics['confusion_matrix'],
-                     index=[f'True_{name}' for name in class_names],
-                     columns=[f'Pred_{name}' for name in class_names])
-cm_csv_path = "rate-confusion_matrix.csv"
-cm_df.to_csv(cm_csv_path)
-print(f"Confusion matrix saved to '{cm_csv_path}'")
-
-print("EVALUATION COMPLETE!")
-print(f"Files generated:")
-print(f"  - Model: {save_path}")
-print(f"  - Metrics: {csv_path}")
-print(f"  - Confusion Matrix: {cm_csv_path}")
-print(f"  - Confusion Matrix Plot: confusion_matrix.png")
-print(f"  - ROC Curves: roc_curves.png")
-print(f"  - Training Curves: training_curves.png")
+# print all the metrics
+print("\nCOMPREHENSIVE METRICS:")
+for metric, value in zip(detailed_metrics["Metric"], detailed_metrics["Value"]):
+    print(f"{metric}: {value}")

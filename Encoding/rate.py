@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 from tensorflow.keras.preprocessing import image
 
 def encode_rate_coding(image_path, time_window=100, max_spikes=20):
-    """Encodes an image into a spike train using rate coding."""
     print(f"Encoding image: {image_path}")
     img = image.load_img(image_path, target_size=(128, 128), color_mode='grayscale')
     img_array = np.array(img) / 255.0  # Normalize to [0,1]
@@ -19,7 +18,6 @@ def encode_rate_coding(image_path, time_window=100, max_spikes=20):
     return img_array, spike_train
 
 def visualize_encoding(img_array, spike_train):
-    """Visualize the original MRI image and its encoded spike train."""
     fig, axes = plt.subplots(1, 2, figsize=(10, 5))
     
     # Original Image
@@ -35,7 +33,6 @@ def visualize_encoding(img_array, spike_train):
     plt.show()
 
 def process_directory(input_dir, output_dir, time_window=100, max_spikes=20):
-    """Processes all images in training and testing directories, encoding them and saving as .npy."""
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
@@ -85,6 +82,6 @@ def process_directory(input_dir, output_dir, time_window=100, max_spikes=20):
     print("Processing complete!")
 
 
-input_directory = "neuralNeurosis/Brain-Tumor-Classification-DataSet"
-output_directory = "neuralNeurosis/Encoding/Rate-Encoding"
+input_directory = "Brain-Tumor-Classification-DataSet"
+output_directory = "Encoding/Rate-Encoding"
 process_directory(input_directory, output_directory)

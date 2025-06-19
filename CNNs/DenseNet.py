@@ -86,7 +86,7 @@ print(f"DenseNEt model saved as '{model_path}'")
 avg_time, cpu_usage, ram_usage = measure_performance(densenet_model, test_gen)
 params = densenet_model.count_params()
 
-# Save metrics to CSV
+
 metrics = {
     "Inference Time (s)": [avg_time],
     "CPU Usage (%)": [cpu_usage],
@@ -94,8 +94,6 @@ metrics = {
     "Total Parameters": [params]
 }
 
-metrics_df = pd.DataFrame(metrics)
-csv_path = "densenet_metrics.csv"
-metrics_df.to_csv(csv_path, index=False)
-print(f"Metrics saved to '{csv_path}'")
+for metric in performance_metrics:
+    print(f"{metric}: {performance_metrics[metric][0]}")
 

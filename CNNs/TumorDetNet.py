@@ -284,15 +284,5 @@ performance_metrics = {
     "Mean AUC-ROC": [detailed_metrics[detailed_metrics['Class'] == 'Macro Average']['AUC-ROC'].values[0]]
 }
 
-# Save all metrics
-performance_df = pd.DataFrame(performance_metrics)
-detailed_metrics.to_csv("tumordetnet_detailed_metrics.csv", index=False)
-performance_df.to_csv("tumordetnet_performance_summary.csv", index=False)
-
-print(f"Detailed metrics saved to 'tumordetnet_detailed_metrics.csv'")
-print(f"Performance summary saved to 'tumordetnet_performance_summary.csv'")
-
-# Save confusion matrix as CSV
-cm_df = pd.DataFrame(confusion_mat, columns=class_names, index=class_names)
-cm_df.to_csv("tumordetnet_confusion_matrix.csv")
-print(f"Confusion matrix saved to 'tumordetnet_confusion_matrix.csv'")
+for metric in performance_metrics:
+    print(f"{metric}: {performance_metrics[metric][0]}")
