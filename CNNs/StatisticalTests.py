@@ -20,7 +20,7 @@ def set_seeds(seed=42):
     os.environ['PYTHONHASHSEED'] = str(seed)
 
 # Keep existing functions the same
-  def prepare_data(train_dir, test_dir, img_size, batch_size):
+def prepare_data(train_dir, test_dir, img_size, batch_size):
     train_datagen = ImageDataGenerator(rescale=1.0/255)
     test_datagen = ImageDataGenerator(rescale=1.0/255)
     
@@ -217,9 +217,9 @@ def compare_multiple_models(model_names, n_runs=5, epochs=30):
     all_model_results = {}
     
     for model_name in model_names:
-        print(f"\n{'='*60}")
+
         print(f"TRAINING {model_name.upper()}")
-        print('='*60)
+
         
         results, class_names = multiple_runs_experiment(model_name, n_runs, epochs)
         all_model_results[model_name] = results
@@ -262,7 +262,6 @@ def perform_statistical_tests(all_results, model_name, baseline_accuracy=None): 
     accuracies = [result['accuracy'] for result in all_results]
     
     print(f"\nStatistical Analysis for {model_name}:")
-    print("-" * 40)
     
     # Basic statistics
     mean_acc = np.mean(accuracies)
@@ -325,14 +324,11 @@ if __name__ == "__main__":
     all_model_results, class_names = compare_multiple_models(models_to_test, n_runs, epochs)
     
     # Generate comprehensive analysis
-    print(f"\n{'='*60}")
     print("COMPREHENSIVE STATISTICAL ANALYSIS")
-    print('='*60)
     
     # Individual model analysis
     for model_name, results in all_model_results.items():
         print(f"\n{model_name.upper()} ANALYSIS:")
-        print("-" * 50)
         
         # Calculate statistics
         stats_summary, per_class_stats = calculate_statistics(results, class_names)
@@ -345,34 +341,6 @@ if __name__ == "__main__":
         
         # Statistical tests
         perform_statistical_tests(results, model_name)
+
         
-        # Save individual results
-        overall_df.to_csv(f'{model_name.lower()}_overall_results.csv', index=False)
-        per_class_df.to_csv(f'{model_name.lower()}_per_class_results.csv', index=False)
-    
-    # Model comparison
-    print(f"\n{'='*60}")
-    print("MODEL COMPARISON TABLE")
-    print('='*60)
-    
-    comparison_table, _ = create_comparison_table(all_model_results)
-    print("\nComparison of All Models:")
-    print(comparison_table)
-    
-    # Statistical comparisons between models
-    perform_model_comparison_tests(all_model_results)
-    
-    # Generate paper text
-    generate_paper_text(all_model_results, class_names)
-    
-    # Save comparison results
-    comparison_table.to_csv('model_comparison_results.csv', index=False)
-    
-    print(f"\n{'='*60}")
     print("ANALYSIS COMPLETE")
-    print('='*60)
-    print("Files saved:")
-    for model in models_to_test:
-        print(f"  - {model.lower()}_overall_results.csv")
-        print(f"  - {model.lower()}_per_class_results.csv")
-    print("  - model_comparison_results.csv")

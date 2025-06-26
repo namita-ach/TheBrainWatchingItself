@@ -23,6 +23,7 @@ warnings.filterwarnings('ignore')
 torch.cuda.empty_cache()
 
 # Define a custom dataset class
+class BrainTumorDataset(Dataset):
     def __init__(self, root_dir):
         self.root_dir = root_dir
         self.classes = sorted(os.listdir(root_dir))  # Ensure class order consistency
@@ -358,10 +359,10 @@ def count_parameters(model):
     return sum(p.numel() for p in model.parameters())
 
 # Load dataset
-train_dataset = BrainTumorDataset("Encoding/Temporal-Encoding/Training")
-test_dataset = BrainTumorDataset("Encoding/Temporal-Encoding/Testing")
+train_dataset = BrainTumorDataset("/home/pes1ug22am100/Documents/TheBrainWatchingItself/Rate-Encoding/Training")
+test_dataset = BrainTumorDataset("/home/pes1ug22am100/Documents/TheBrainWatchingItself/Rate-Encoding/Testing")
 # train_dataset = BrainTumorDataset("Encoding/Rate-Encoding/Training")
-# test_dataset = BrainTumorDataset("Encoding/Rate-Encoding/Testing")
+# test_dataset = BrainTumorDataset("Encoding/Rate-Encoding/Testing") # BOB
 
 train_loader = DataLoader(train_dataset, batch_size=8, shuffle=True)
 test_loader = DataLoader(test_dataset, batch_size=8, shuffle=False)
